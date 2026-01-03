@@ -95,7 +95,7 @@
     };
     
     function init() {
-        const neko_url = "http://localhost:3000/neko.gif";
+        const neko_url = "https://github.com/ander-discord/oneko.user.js/blob/main/neko.gif?raw=true";
     
         neko.id = "neko";
         neko.style.width = "32px";
