@@ -173,7 +173,6 @@ function tick() {
             } else if (idleanimation === "tired") {
                 sleep -= Math.random() - 0.5;
             } else if (idleanimation === "sleeping") {
-                sleep -= 2;
                 lastsleep = frametime;
             }
 
@@ -184,6 +183,7 @@ function tick() {
         if (idleanimation) {
             setSprite(idleanimation, frame);
             if (idleanimation === "sleeping") {
+                sleeping -= 0.05;
                 if (Math.random() * 64 == 0) idleanimation = null;
             } else {
                 if (frame > spritesets[idleanimation].length * 2) idleanimation = null;
