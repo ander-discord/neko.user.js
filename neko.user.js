@@ -42,6 +42,7 @@ const spritesets = {
     scratchWallW: [[-4, 0], [-4, -1]],
     tired: [[-3, -2]],
     sleeping: [[-2, 0], [-2, -1]],
+    dragging: [[-1, -2]],
     N: [[-1, -2], [-1, -3]],
     NE: [[0, -2], [0, -3]],
     E: [[-3, 0], [-3, -1]],
@@ -92,12 +93,14 @@ function tick() {
     frame += 1;
     frametime += 1;
 
+    if (dragging) {
+        setSprite("dragging", 0);
+        return;
+    }
+    
     let diffX = mouseX - nekoX;
     let diffY = mouseY - nekoY;
     let distance = Math.hypot(diffX, diffY) || 1;
-
-    const scrollX = window.scrollX;
-    const scrollY = window.scrollY;
 
     if (distance < stopdistance) {
         if (!idle) {
