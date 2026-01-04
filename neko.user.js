@@ -114,9 +114,12 @@ function tick() {
         }
 
         if (idletime == 4 && !idleanimation && !idlewalktarget && Math.floor(Math.random() * 3) === 0) {
+            const angle = Math.random() * Math.PI * 2;
+            const radius = Math.random() * stopdistance;
+
             idlewalktarget = {
-                x: mouseX + Math.random() * stopdistance - stopdistance / 2,
-                y: mouseY + Math.random() * stopdistance - stopdistance / 2
+                x: mouseX + Math.cos(angle) * radius,
+                y: mouseY + Math.sin(angle) * radius
             };
             idlewalktarget.x = Math.min(Math.max(16, idlewalktarget.x), window.innerWidth - 16);
             idlewalktarget.y = Math.min(Math.max(16, idlewalktarget.y), window.innerHeight - 16);
