@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         neko!!!
-// @version      v1.1.0
+// @version      v1.1.1
 // @description  a good cat!
 // @author       fiveappls/ander-discord
 // @match        https://*/*
@@ -17,8 +17,6 @@ let idleanimation = null;
 let idlewalktarget = null;
 
 let dragging = false;
-let dragoffsetX = 0;
-let dragoffsetY = 0;
 let touched = false;
 
 let mousemoved = false;
@@ -230,8 +228,6 @@ init();
 
 neko.addEventListener("pointerdown", (e) => {
     dragging = true;
-    dragoffsetX = e.clientX - nekoX;
-    dragoffsetY = e.clientY - nekoY;
 
     idlewalktarget = null;
     idle = true;
@@ -246,11 +242,8 @@ neko.addEventListener("pointerenter", () => {
 document.addEventListener("pointermove", (e) => {
     if (!dragging) return;
 
-    nekoX = e.clientX - dragoffsetX;
-    nekoY = e.clientY - dragoffsetY;
-
-    nekoX = Math.min(Math.max(16, nekoX), window.innerWidth - 16);
-    nekoY = Math.min(Math.max(16, nekoY), window.innerHeight - 16);
+    nekoX = mouseX;
+    nekoY = mouseY + 16;
 
     neko.style.left = `${nekoX - 16}px`;
     neko.style.top = `${nekoY - 16}px`;
