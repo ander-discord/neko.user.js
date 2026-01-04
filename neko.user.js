@@ -167,6 +167,9 @@ function tick() {
             frame = 0;
             idletime = 0;
         }
+        if (idleanimation) {
+            return;
+        }
 
         if (idleanimation) {
             setSprite(idleanimation, frame);
